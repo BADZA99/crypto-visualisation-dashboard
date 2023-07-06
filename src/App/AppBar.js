@@ -1,20 +1,43 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 
 const Bar=styled.div`
     display:grid;
+    margin-bottom:40px;
     grid-template-columns:100px auto 100px 100px;
-    align-items:center;
-    justify-content:space-between;
-    padding:24px;
 `
+
+const Logo = styled.div`
+    font-size:1.5em;
+`
+
+function toProperCase(lower){
+    return lower.charAt(0).toUpperCase()+lower.substr(1);
+}
+
+const ControlButtonElem=styled.div`
+    cursor:pointer;
+    ${props=> props.active && css`
+    color:white;
+    text-shadow:0px 0px 60px #03ff03;
+`} 
+`
+
+function CntrolButtutton({name,active}){
+    return(
+        <ControlButtonElem active={active}>
+             {toProperCase(name)}
+        </ControlButtonElem>
+    )
+}
 
 export default function Appbar () {
   return(
       <Bar>
-            <div>CryptoVision</div>
+            <Logo>CryptoVision</Logo>
             <div></div>
-            <div>Dashboard</div>
-            <div>Settings</div>
+            <CntrolButtutton  active name="dashboard"/>
+
+            <CntrolButtutton name="settings"/>
       </Bar>
   );
 }
