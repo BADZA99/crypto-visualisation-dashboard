@@ -1,4 +1,4 @@
 export default function Welcome() {
-    return <h1>Hello World!</h1>
+    return <h1>Welcome To CryptoVision !</h1>
     
   }
